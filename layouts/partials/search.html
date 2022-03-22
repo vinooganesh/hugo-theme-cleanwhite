@@ -33,20 +33,19 @@ const hitTemplate = function(hit) {
     }).join(' > ')
   }
 
-  let content = "" ; 
-  if (hit._highlightResult.content){
-      content = hit._highlightResult.content.value;
-  }
-  else{
-      content = hit.summary;
-  }
+  let content = hit.summary ;
+  // if (hit._highlightResult.content){
+  //     content = hit._highlightResult.content.value;
+  // }
+  // else{
+  //     content = hit.summary;
+  // }
 
 
   return `
     <div class="post-item">
-      <span class="post-meta">${date}</span>
       <h2><a class="post-link" href="${url}">${title}</a></h2>
-      <a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>
+      <a href="${url}"></a>
       <div class="post-snippet">${content}</div>
     </div>
   `;
