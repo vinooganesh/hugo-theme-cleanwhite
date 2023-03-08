@@ -10,6 +10,9 @@
     {{ if .Params.thumbnail }}
     <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}">
     <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" />
+    {{ else if .Params.image}}
+    <meta property="og:image" content="{{ .Params.image }}">
+    <meta property="twitter:image" content="{{ .Params.image }}" />
     {{ else }}
     <meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.header_image }}">
     <meta property="twitter:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.header_image }}" />
@@ -79,9 +82,16 @@
     <!-- Hux Theme JavaScript -->
     <script src="{{ "js/hux-blog.min.js" | relURL }}"></script>
 
+    <!-- lazy load image JavaScript -->
+    <script src="{{ "js/lazysizes.min.js" | relURL }}"></script>
+
     <!-- Custom JS -->
     {{ range .Site.Params.custom_js }}
     <script src="{{ . | absURL }}"></script>
     {{ end }}
 
 </head>
+
+{{ if .Site.GoogleAnalytics }}
+{{ template "_internal/google_analytics.html" . }}
+{{ end }}
